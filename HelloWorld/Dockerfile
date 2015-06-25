@@ -2,9 +2,9 @@ FROM        ubuntu:14.04
 
 MAINTAINER  Gerald Leenerts <gleenerts@lifetimefitness.com>
 
-ADD         build.sh /root/
+ADD         run.sh /root/
 
-RUN         chmod +x /root/build.sh
+RUN         chmod +x /root/run.sh
 
 WORKDIR     /root/
-ENTRYPOINT  ["/root/build.sh"]
+ENTRYPOINT  ["/root/run.sh"]

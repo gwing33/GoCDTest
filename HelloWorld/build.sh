@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo "Hello World"
+echo "Building..."
+echo "Complete"

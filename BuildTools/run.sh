@@ -2,17 +2,24 @@
 
 cd /root/
 
-if [ ! -z "$GITHUB_URL"]; then
+if [ ! -z "$GIT_REPO"]; then
   # Need to pull down the git repo.
-  git clone "$GITHUB_URL" repo
+  git clone "$GIT_REPO" repo
   cd ./repo
 
   # If passed commit or branch in, check it out.
-  if [ ! -z "$GITHUB_COMMIT"]; then
-    git checkout "$GITHUB_COMMIT"
+  if [ ! -z "$GIT_TAG"]; then
+    git checkout "$GIT_TAG"
   fi
 fi
 
-ls
-chmod +x /root/repo/build.sh
-bash /root/repo/build.sh
+cd ./repo/
+chmod +x ./build.sh
+bash ./build
+
+# Run Tests
+
+# If Pass, build image
+docker build --rm --force-rm -t this .
+
+# Push to docker repo

@@ -1,4 +1,5 @@
-FROM        ubuntu:14.04
+# This image contains docker
+FROM jpetazzo/dind:latest
 
 MAINTAINER  Gerald Leenerts <gleenerts@lifetimefitness.com>
 
@@ -15,10 +16,6 @@ RUN         apt-get update && apt-get install -y \
             maven \
             wget
 
-# # INSTALL DOCKER
-# RUN         cd /tmp && \
-#             wget -qO- https://get.docker.com/ | sh
-
 # INSTALL JAVA 8
 RUN         echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
             echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
@@ -33,12 +30,11 @@ RUN         cd /tmp && \
             mv /usr/local/activator-dist-$ACTIVATOR_VERSION /usr/local/activator && \
             rm typesafe-activator-$ACTIVATOR_VERSION.zip
 
-ADD         run_in_docker.sh /bin/bash/
+# ADD         run_in_docker.sh /bin/bash/
 ADD         run.sh /root/
 
-RUN         chmod +x /bin/bash/run_in_docker.sh
+# RUN         chmod +x /bin/bash/run_in_docker.sh
 RUN         chmod +x /root/run.sh
 
 WORKDIR     /root
-ENTRYPOINT  ["/root/run.sh"]
-EXPOSE      9000
+ENTRYPOINT  ["/root/run"]
