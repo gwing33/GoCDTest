@@ -2,10 +2,9 @@
 
 cd /root/
 
-if [ ! -z "$GIT_REPO"]; then
+if [ ! -z "$GIT_REPO" ]; then
   # Need to pull down the git repo.
   git clone "$GIT_REPO" repo
-  cd ./repo
 
   # If passed commit or branch in, check it out.
   if [ ! -z "$GIT_TAG"]; then
@@ -13,9 +12,10 @@ if [ ! -z "$GIT_REPO"]; then
   fi
 fi
 
-cd ./repo/
+cd ./repo/HelloWorld
+
 chmod +x ./build.sh
-bash ./build
+bash ./build.sh
 
 # Run Tests
 

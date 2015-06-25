@@ -37,4 +37,4 @@ ADD         run.sh /root/
 RUN         chmod +x /root/run.sh
 
 WORKDIR     /root
-ENTRYPOINT  ["/root/run"]
+ENTRYPOINT  ["/root/run.sh"]
