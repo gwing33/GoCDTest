@@ -8,3 +8,5 @@ target
 /RUNNING_PID
 .DS_Store
 .sbtserver
+.vagrant
+*.swp
